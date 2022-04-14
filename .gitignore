@@ -1,0 +1,7 @@
+.metadata
+/bin
+/target
+.project
+.classpath
+
+/src/main/resources/META-INF/persistence.xml
