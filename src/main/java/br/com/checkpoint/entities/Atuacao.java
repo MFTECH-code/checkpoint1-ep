@@ -22,7 +22,7 @@ public class Atuacao {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "NM_FUNCAO", nullable = false, length = 50)
-	private Funcao funcao;
+	private Funcao function;
 	
 	@Column(name = "DT_INICIO", nullable = false)
 	private Date startDate;
@@ -30,30 +30,29 @@ public class Atuacao {
 	@Column(name = "DT_FIM", nullable = false)
 	private Date endDate;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "DS_FUNCAO", nullable = false, length = 100)
-	private Funcao funcaoDescricao;
+	private String description;
 	
 	
-	public Atuacao(Long id, Funcao funcao, Date startDate, Date endDate, Funcao funcaoDescricao) {
+	public Atuacao(Long id, Funcao function, Date startDate, Date endDate, String description) {
 		super();
 		this.id = id;
-		this.funcao = funcao;
+		this.function = function;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.funcaoDescricao = funcaoDescricao;
+		this.description = description;
 	}
 	
 	public Atuacao() {
 		super();
 	}
 
-	public Funcao getFuncao() {
-		return funcao;
+	public Funcao getFunction() {
+		return function;
 	}
 
-	public void setFuncao(Funcao funcao) {
-		this.funcao = funcao;
+	public void setFunction(Funcao function) {
+		this.function = function;
 	}
 
 	public Date getStartDate() {
@@ -72,12 +71,12 @@ public class Atuacao {
 		this.endDate = endDate;
 	}
 
-	public Funcao getFuncaoDescricao() {
-		return funcaoDescricao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setFuncaoDescricao(Funcao funcaoDescricao) {
-		this.funcaoDescricao = funcaoDescricao;
+	public void setFuncaoDescription(String description) {
+		this.description = description;
 	}
 
 }
