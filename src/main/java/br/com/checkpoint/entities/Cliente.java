@@ -1,6 +1,7 @@
 package br.com.checkpoint.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,19 +9,20 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table(name = "TB_CLIENTE")
-@SequenceGenerator(name = "cliente", sequenceName = "SQ_TB_CLIENTE", allocationSize = 1)
+@Entity
+@SequenceGenerator(name = "SQ_TB_CLIENTE", sequenceName = "SQ_TB_CLIENTE", allocationSize = 1)
 public class Cliente {
 
 	@Id
 	@Column(name = "CD_CLIENTE")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TB_CLIENTE")
 	private Long id;
 	
 	@Column(name = "NM_CLIENTE", length = 50, nullable = false)
 	private String client;
 	
 	@Column(name = "DS_CNPJ", length = 11, nullable = false, unique = true)
-	private String CNPJ;
+	private String cnpj;
 	
 	@Column(name = "DS_TELEFONE", length = 14, nullable = false)
 	private String tel;
@@ -34,10 +36,10 @@ public class Cliente {
 	}
 	
 	
-	public Cliente(String client, String cNPJ, String tel, String email) {
+	public Cliente(String client, String cnpj, String tel, String email) {
 		super();
 		this.client = client;
-		CNPJ = cNPJ;
+		this.cnpj = cnpj;
 		this.tel = tel;
 		this.email = email;
 	}
@@ -58,12 +60,12 @@ public class Cliente {
 		this.client = client;
 	}
 
-	public String getCNPJ() {
-		return CNPJ;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setCNPJ(String cNPJ) {
-		CNPJ = cNPJ;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	public String getTel() {

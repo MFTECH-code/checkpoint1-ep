@@ -1,8 +1,9 @@
 package br.com.checkpoint.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,30 +11,30 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table(name = "TB_PROJETO")
-@SequenceGenerator(name = "projeto", sequenceName = "SQ_TB_PROJETO", allocationSize = 1)
+@Entity
+@SequenceGenerator(name = "SQ_TB_PROJETO", sequenceName = "SQ_TB_PROJETO", allocationSize = 1)
 public class Projeto {
 
 	@Id
 	@Column(name = "CD_PROJETO")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projeto")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TB_PROJETO")
 	private Long id;
 
 	@Column(name = "NM_PROJETO", length = 50, nullable = false)
 	private String name;
 
-	@Column(name = "DT_INICIO", nullable = false)
-	private Date startDate;
+	@Column(name = "DT_INICIO")
+	private LocalDate startDate;
 
-	@Column(name = "CD_TERMINO", nullable = false)
-	private Date endDate;
+	@Column(name = "CD_TERMINO")
+	private LocalDate endDate;
 
 	public Projeto() {
 		super();
 	}
 
-	public Projeto(Long id, String name, Date startDate, Date endDate) {
+	public Projeto(String name, LocalDate startDate, LocalDate endDate) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -55,19 +56,19 @@ public class Projeto {
 		this.name = name;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 

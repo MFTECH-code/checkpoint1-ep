@@ -1,8 +1,9 @@
 package br.com.checkpoint.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -12,12 +13,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table(name="TB_ATUACAO")
-@SequenceGenerator(name = "atuacao", sequenceName = "SQ_TB_ATUACAO", allocationSize = 1)
+@Entity
+@SequenceGenerator(name = "SQ_TB_ATUACAO", sequenceName = "SQ_TB_ATUACAO", allocationSize = 1)
 public class Atuacao {
 	
 	@Id
 	@Column(name = "CD_FUNCAO")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atuacao")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TB_ATUACAO")
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
@@ -25,18 +27,17 @@ public class Atuacao {
 	private Funcao function;
 	
 	@Column(name = "DT_INICIO", nullable = false)
-	private Date startDate;
+	private LocalDate startDate;
 	
 	@Column(name = "DT_FIM", nullable = false)
-	private Date endDate;
+	private LocalDate endDate;
 	
 	@Column(name = "DS_FUNCAO", nullable = false, length = 100)
 	private String description;
 	
 	
-	public Atuacao(Long id, Funcao function, Date startDate, Date endDate, String description) {
+	public Atuacao(Funcao function, LocalDate startDate, LocalDate endDate, String description) {
 		super();
-		this.id = id;
 		this.function = function;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -55,19 +56,19 @@ public class Atuacao {
 		this.function = function;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 

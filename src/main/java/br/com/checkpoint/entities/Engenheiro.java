@@ -10,12 +10,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Table(name = "TB_ENGENHEIRO")
-@SequenceGenerator(name = "engenheiro", sequenceName = "SQ_TB_ENGENHEIRO", allocationSize = 1)
+@Entity
+@SequenceGenerator(name = "SQ_TB_ENGENHEIRO", sequenceName = "SQ_TB_ENGENHEIRO", allocationSize = 1)
 public class Engenheiro {
 	
 	@Id
 	@Column(name = "CD_ENGENHEIRO")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "engenheiro")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TB_ENGENHEIRO")
 	private Long id;
 	
 	@Column(name = "NM_ENGENHEIRO", length = 50, nullable = false )
