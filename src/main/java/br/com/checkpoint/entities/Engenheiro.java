@@ -23,12 +23,23 @@ public class Engenheiro {
 	@Column(name = "CD_CREA", length = 10, nullable = false, unique = true)
 	private String crea;
 	
-	@Column(name = "DS_IDADE")
+	@Column(name = "DS_IDADE", nullable = false)
 	private int age;
 	
 	@Lob
 	@Column(name = "FT_ENGENHEIRO")
 	private byte[] picture;
+	
+	public Engenheiro() {
+		super();
+	}
+
+	public Engenheiro(String name, String crea, int age) {
+		super();
+		this.name = name;
+		this.crea = crea;
+		this.age = age;
+	}
 
 	public Long getId() {
 		return id;
