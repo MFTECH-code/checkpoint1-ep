@@ -25,7 +25,7 @@ public class Engenheiro {
 	@Column(name = "CD_CREA", length = 10, nullable = false, unique = true)
 	private String crea;
 	
-	@Column(name = "DS_IDADE", nullable = false)
+	@Column(name = "DS_IDADE", length = 3, nullable = false)
 	private int age;
 	
 	@Lob

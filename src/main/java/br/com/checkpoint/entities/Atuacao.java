@@ -1,6 +1,7 @@
 package br.com.checkpoint.entities;
 
-import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Table(name="TB_ATUACAO")
 @Entity
@@ -26,17 +29,19 @@ public class Atuacao {
 	@Column(name = "NM_FUNCAO", nullable = false, length = 50)
 	private Funcao function;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "DT_INICIO", nullable = false)
-	private LocalDate startDate;
+	private Date startDate;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "DT_FIM", nullable = false)
-	private LocalDate endDate;
+	private Date endDate;
 	
 	@Column(name = "DS_FUNCAO", nullable = false, length = 100)
 	private String description;
 	
 	
-	public Atuacao(Funcao function, LocalDate startDate, LocalDate endDate, String description) {
+	public Atuacao(Funcao function, Date startDate, Date endDate, String description) {
 		super();
 		this.function = function;
 		this.startDate = startDate;
@@ -56,19 +61,19 @@ public class Atuacao {
 		this.function = function;
 	}
 
-	public LocalDate getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDate getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

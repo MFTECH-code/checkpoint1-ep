@@ -26,7 +26,7 @@ public class Projeto {
 	@Column(name = "DT_INICIO")
 	private LocalDate startDate;
 
-	@Column(name = "CD_TERMINO")
+	@Column(name = "DT_FIM")
 	private LocalDate endDate;
 
 	public Projeto() {

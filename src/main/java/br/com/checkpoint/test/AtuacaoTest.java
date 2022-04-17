@@ -1,6 +1,6 @@
 package br.com.checkpoint.test;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +11,7 @@ import br.com.checkpoint.entities.Funcao;
 import br.com.checkpoint.impl.AtuacaoImpl;
 import br.com.checkpoint.singleton.EntityManagerFactorySingleton;
 
+@SuppressWarnings("all")
 public class AtuacaoTest {
 
 	public static void main(String[] args) {
@@ -22,7 +23,7 @@ public class AtuacaoTest {
 		
 		AtuacaoDao dao = new AtuacaoImpl(em);
 		
-		Atuacao atuacao = new Atuacao(Funcao.CIVIL, LocalDate.of(2020, 04, 04), LocalDate.of(2025, 05, 05), "ola");
+		Atuacao atuacao = new Atuacao(Funcao.CIVIL, new Date(2022, 7, 13), new Date(2022, 8, 14), "ola");
 		
 		try {
 			dao.insert(atuacao);
