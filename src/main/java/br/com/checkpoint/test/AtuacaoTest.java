@@ -23,7 +23,7 @@ public class AtuacaoTest {
 		
 		AtuacaoDao dao = new AtuacaoImpl(em);
 		
-		Atuacao atuacao = new Atuacao(Funcao.CIVIL, new Date(2022, 7, 13), new Date(2022, 8, 14), "ola");
+		Atuacao atuacao = new Atuacao(Funcao.CIVIL, "ola");
 		
 		try {
 			dao.insert(atuacao);

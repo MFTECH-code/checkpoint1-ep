@@ -1,8 +1,5 @@
 package br.com.checkpoint.entities;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Table(name="TB_ATUACAO")
 @Entity
@@ -21,31 +16,21 @@ import javax.persistence.TemporalType;
 public class Atuacao {
 	
 	@Id
-	@Column(name = "CD_FUNCAO")
+	@Column(name = "CD_ATUACAO")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TB_ATUACAO")
 	private Long id;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "NM_FUNCAO", nullable = false, length = 50)
+	@Column(name = "NM_ATUACAO", nullable = false, length = 50)
 	private Funcao function;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "DT_INICIO", nullable = false)
-	private Date startDate;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "DT_FIM", nullable = false)
-	private Date endDate;
-	
-	@Column(name = "DS_FUNCAO", nullable = false, length = 100)
+	@Column(name = "DS_ATUACAO", nullable = false, length = 100)
 	private String description;
 	
 	
-	public Atuacao(Funcao function, Date startDate, Date endDate, String description) {
+	public Atuacao(Funcao function, String description) {
 		super();
 		this.function = function;
-		this.startDate = startDate;
-		this.endDate = endDate;
 		this.description = description;
 	}
 	
@@ -59,22 +44,6 @@ public class Atuacao {
 
 	public void setFunction(Funcao function) {
 		this.function = function;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
 	}
 
 	public String getDescription() {
