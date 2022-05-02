@@ -1,10 +1,16 @@
 package br.com.checkpoint.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +30,8 @@ public class Construtora {
 	@Column(name = "NM_CONSTRUTORA", length = 50, nullable = false)
 	private String construtora;
 
+	@OneToMany(mappedBy = "construtora", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Cliente> clientes;
 	
 	public Construtora() {
 		super();
@@ -33,6 +41,12 @@ public class Construtora {
 		super();
 		CNPJ = cNPJ;
 		this.construtora = construtora;
+		this.clientes = new ArrayList<Cliente>();
+	}
+	
+	public void addCliente(Cliente cliente) {
+		cliente.setConstrutora(this);
+		clientes.add(cliente);
 	}
 
 	
@@ -60,6 +74,16 @@ public class Construtora {
 		this.construtora = construtora;
 	}
 
-	
-	
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	@Override
+	public String toString() {
+		return "Construtora [id=" + id + ", CNPJ=" + CNPJ + ", construtora=" + construtora + "]";
+	}
 }
