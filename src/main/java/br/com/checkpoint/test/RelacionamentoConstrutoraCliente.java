@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import br.com.checkpoint.dao.ConstrutoraDao;
 import br.com.checkpoint.entities.Cliente;
 import br.com.checkpoint.entities.Construtora;
+import br.com.checkpoint.exceptions.TransactionException;
 import br.com.checkpoint.impl.ConstrutoraImpl;
 import br.com.checkpoint.singleton.EntityManagerFactorySingleton;
 
@@ -34,6 +35,9 @@ public class RelacionamentoConstrutoraCliente {
 			System.out.println(construtoraSelect);
 			
 			dao.commit();
+		} catch(TransactionException tex) {
+			System.out.println(tex.getMessage());
+			
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
