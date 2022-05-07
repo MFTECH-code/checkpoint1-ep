@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,16 +34,37 @@ public class Engenheiro {
 	@Column(name = "FT_ENGENHEIRO")
 	private byte[] picture;
 	
-	public Engenheiro() {
-		super();
-	}
-
+	@ManyToOne
+	@JoinColumn(name = "CD_CONSTRUTORA")
+	private Construtora construtora;
+	
 	public Engenheiro(String name, String crea, int age) {
 		super();
 		this.name = name;
 		this.crea = crea;
 		this.age = age;
 	}
+	
+	public Engenheiro(String name, String crea, int age, Construtora construtora) {
+		super();
+		this.name = name;
+		this.crea = crea;
+		this.age = age;
+		this.construtora = construtora;
+	}
+	
+	public Engenheiro() {
+		super();
+	}
+	
+	public Construtora getConstrutora() {
+		return construtora;
+	}
+	
+	public void setConstrutora(Construtora construtora) {
+		this.construtora = construtora;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -81,6 +104,12 @@ public class Engenheiro {
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
+	}
+
+	@Override
+	public String toString() {
+		return "Engenheiro [id=" + id + ", name=" + name + ", crea=" + crea + ", age=" + age + ", "
+				+ ", construtora=" + construtora + "]";
 	}
 	
 }

@@ -33,6 +33,9 @@ public class Construtora {
 	@OneToMany(mappedBy = "construtora", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Cliente> clientes;
 	
+	@OneToMany(mappedBy = "construtora", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Engenheiro> engenheiros;
+	
 	public Construtora() {
 		super();
 	}
@@ -42,14 +45,27 @@ public class Construtora {
 		CNPJ = cNPJ;
 		this.construtora = construtora;
 		this.clientes = new ArrayList<Cliente>();
+		this.engenheiros = new ArrayList<Engenheiro>();
 	}
 	
 	public void addCliente(Cliente cliente) {
 		cliente.setConstrutora(this);
 		clientes.add(cliente);
 	}
-
 	
+	public void addEngenheiro(Engenheiro engenheiro) {
+		engenheiro.setConstrutora(this);
+		engenheiros.add(engenheiro);
+	}
+	
+	public List<Engenheiro> getEngenheiros() {
+		return engenheiros;
+	}
+
+	public void setEngenheiros(List<Engenheiro> engenheiros) {
+		this.engenheiros = engenheiros;
+	}
+
 	public Long getId() {
 		return id;
 	}
