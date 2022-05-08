@@ -1,12 +1,14 @@
 package br.com.checkpoint.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,6 +30,9 @@ public class Projeto {
 
 	@Column(name = "DT_FIM")
 	private LocalDate endDate;
+	
+	@ManyToMany
+	private List<Engenheiro> engenheiros;
 
 	public Projeto() {
 		super();
@@ -70,6 +75,14 @@ public class Projeto {
 
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
+	}
+
+	public List<Engenheiro> getEngenheiros() {
+		return engenheiros;
+	}
+
+	public void setEngenheiros(List<Engenheiro> engenheiros) {
+		this.engenheiros = engenheiros;
 	}
 
 }

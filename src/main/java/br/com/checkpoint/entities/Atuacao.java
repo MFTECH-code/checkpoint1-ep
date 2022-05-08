@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,6 +28,8 @@ public class Atuacao {
 	@Column(name = "DS_ATUACAO", nullable = false, length = 100)
 	private String description;
 	
+	@OneToOne(mappedBy = "atuacao")
+	private Engenheiro engenheiro;
 	
 	public Atuacao(Funcao function, String description) {
 		super();

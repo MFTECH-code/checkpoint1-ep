@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,6 +32,10 @@ public class Cliente {
 	@Column(name = "DS_EMAIL", length = 80)
 	private String email;
 
+	@ManyToOne
+	@JoinColumn(name = "CD_CONSTRUTORA")
+	private Construtora construtora;
+	
 	
 	public Cliente() {
 		super();
@@ -83,9 +89,21 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
+
+
+	public Construtora getConstrutora() {
+		return construtora;
+	}
+
+
+	public void setConstrutora(Construtora construtora) {
+		this.construtora = construtora;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", client=" + client + ", cnpj=" + cnpj + ", tel=" + tel + ", email=" + email
+				+ ", construtora=" + construtora + "]";
+	}
 	
 }
